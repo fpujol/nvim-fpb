@@ -14,8 +14,10 @@ end
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
   -- Add Colors
-  use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
+  --use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
+  use { "catppuccin/nvim", as = "catppuccin",  config = "vim.cmd('colorscheme catppuccin')" }
   -- Syntax Highliter
   use {
       'nvim-treesitter/nvim-treesitter',
@@ -40,7 +42,7 @@ return require('packer').startup(function(use)
   -- File Explorer
   use {
       'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons',
+      requires = 'nvim-tree/nvim-web-devicons',
       cmd = "NvimTreeToggle",
       config = "require('nvim-tree-config')"
   }
@@ -66,12 +68,22 @@ return require('packer').startup(function(use)
   --use { 'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')" }
   use {'fatih/vim-go'}
   -- Debugging
+  --use {'puremourning/vimspector'}
+  -- vimspector
+  --use {
+  -- "puremourning/vimspector",
+  --cmd = { "VimspectorInstall", "VimspectorUpdate" },
+   --fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+   --config = function()
+   -- require("vimspector-config").setup()
+   --end,
+  --}
   use {
       "mfussenegger/nvim-dap",
       opt = true,
       event = "BufReadPre",
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python","nvim-dap-go", "which-key.nvim" },
+      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python","nvim-dap-go", "which-key.nvim","nvim-dap-csharp" },
       requires = {
         --"Pocco81/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",

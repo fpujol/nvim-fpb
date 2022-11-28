@@ -1,9 +1,9 @@
 local M = {}
 
 -- Debugger installation location
-local install_path = fn.stdpath('data')
-local HOME = os.getenv "HOME"
-local DEBUGGER_LOCATION = install_path .. "/.local/share/nvim/netcoredbg"
+--local install_path = fn.stdpath('data')
+--local HOME = os.getenv "HOME"
+local DEBUGGER_LOCATION = "~\netcoredbg\netcoredbg.exe"
 
 function M.setup()
   local dap = require "dap"
@@ -11,21 +11,22 @@ function M.setup()
   -- Adapter configuration
   dap.adapters.coreclr = {
     type = "executable",
-    command = DEBUGGER_LOCATION .. "/netcoredbg",
-    args = { "--interpreter=vscode" },
+    command = "c:/users/zbook/netcoredbg/netcoredbg",
+    args = { "--interpreter=cli" },
   }
 
   -- Configuration
   dap.configurations.cs = {
-    {
-      type = "coreclr",
-      name = "launch - netcoredbg",
-      request = "launch",
-      program = function()
-        return vim.fn.input("Path to DLL > ", vim.fn.getcwd() .. "/bin/Debug/", "file")
-      end,
+  {
+    type = "coreclr",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    end,
     },
   }
+
 end
 
 return M

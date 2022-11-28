@@ -55,7 +55,7 @@ local function configure_debuggers()
   require("dap-config.python").setup()
   require("dap-config.rust").setup()
   require("dap-config.go").setup()
-  --require("dap-config.csharp").setup()
+  require("dap-config.csharp").setup()
   --require("dap-config.kotlin").setup()
   --require("dap-config.typescript").setup()
 end
