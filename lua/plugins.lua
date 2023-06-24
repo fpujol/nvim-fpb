@@ -14,7 +14,10 @@ end
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
+  --use {
+	--  "windwp/nvim-autopairs",
+  --    config = function() require("nvim-autopairs").setup {} end
+  --}
   -- Add Colors
   --use { 'rose-pine/neovim', config = "vim.cmd('colorscheme rose-pine')" }
   use { "catppuccin/nvim", as = "catppuccin",  config = "vim.cmd('colorscheme catppuccin')" }
@@ -25,6 +28,7 @@ return require('packer').startup(function(use)
       event = "BufWinEnter",
       config = "require('treesitter-config')"
   }
+  use "kyazdani42/nvim-web-devicons"
   -- Status bar
   use {
       'tamton-aquib/staline.nvim',
@@ -42,7 +46,7 @@ return require('packer').startup(function(use)
   -- File Explorer
   use {
       'kyazdani42/nvim-tree.lua',
-      requires = 'nvim-tree/nvim-web-devicons',
+      requires = 'kyazdani42/nvim-web-devicons',
       cmd = "NvimTreeToggle",
       config = "require('nvim-tree-config')"
   }
@@ -83,9 +87,9 @@ return require('packer').startup(function(use)
       opt = true,
       event = "BufReadPre",
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python","nvim-dap-go", "which-key.nvim","nvim-dap-csharp" },
+      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python","nvim-dap-go", "which-key.nvim" },
       requires = {
-        --"Pocco81/DAPInstall.nvim",
+        "Pocco81/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
           "mfussenegger/nvim-dap-python",
@@ -157,4 +161,21 @@ return require('packer').startup(function(use)
     use { "folke/zen-mode.nvim", config = 'require("zen-mode-config")' }
     use { "folke/twilight.nvim", config = "require('twilight-config')" }
     use { 'andweeb/presence.nvim', config = "require('presence-config')" }
+-- use({
+--   'terror/chatgpt.nvim',
+--   run = 'pip3 install -r requirements.txt'
+-- })
+    -- use({
+    -- "jackMort/ChatGPT.nvim",
+    --   config = function()
+    --     require("chatgpt").setup({
+    --       -- optional configuration
+    --     })
+    --   end,
+    --   requires = {
+    --     "MunifTanjim/nui.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     'nvim-telescope/telescope.nvim',
+    --   }
+    -- })
 end)

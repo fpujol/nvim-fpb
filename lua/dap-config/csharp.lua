@@ -12,7 +12,7 @@ function M.setup()
   dap.adapters.coreclr = {
     type = "executable",
     command = "c:/users/zbook/netcoredbg/netcoredbg",
-    args = { "--interpreter=cli" },
+    args = { "--interpreter=cli","--","dotnet" },
   }
 
   -- Configuration
